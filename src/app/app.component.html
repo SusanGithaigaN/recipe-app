@@ -1,11 +1,13 @@
 <div class="container-fluid">
   <!-- header section -->
   <!-- <div app-header></div> -->
-  <app-header></app-header>
+  <!-- add an event to get access  to any data passed to us -->
+  <app-header (featureSelected)="onNavigate($event)"></app-header>
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <!-- use ngIf to determine which of the two components should be displayed -->
+      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature != 'recipe'"></app-shopping-list>
     </div>
   </div>
 </div>
