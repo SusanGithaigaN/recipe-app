@@ -1,8 +1,22 @@
 <div class="row">
-    <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
-    </div>
-    <div class="col-md-7">
-        <app-recipe-detail></app-recipe-detail>
-    </div>
+  <div class="col-md-5">
+    <!-- listen to custome event for new recipe created -->
+    <!-- store selected recipe and assign a value once recipeWasSelected event occurs-->
+    <app-recipe-list
+      (recipeWasSelected)="selectedRecipe = $event"
+    ></app-recipe-list>
+  </div>
+  <div class="col-md-7">
+    <!-- pass new recipe info to recipe detail -->
+    <!-- add ngIf to determine if recipe details ae to be displayed if selected recipe is set -->
+    <app-recipe-detail
+      *ngIf="selectedRecipe; else infoText"
+      [recipe]="selectedRecipe"
+    ></app-recipe-detail>
+    <!-- add dummy text if recipe is not selected -->
+    <!-- add a local reference -->
+    <ng-template #infoText>
+      <p>Please select a Recipe!</p>
+    </ng-template>
+  </div>
 </div>

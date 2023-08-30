@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Recipe } from '../../recipe.model';
 
 @Component({
@@ -9,5 +9,11 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent {
   // bind recipe component from outside(add a recipe from recipe-list-component)
   @Input() recipe: Recipe;
+  // pass data to theparent component
+  // set type to void since it contains no information
+  @Output() recipeSelected = new EventEmitter<void>();
 
+  onSelected(){
+    this.recipeSelected.emit();
+  }
 }
