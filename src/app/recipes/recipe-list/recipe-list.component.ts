@@ -12,8 +12,9 @@ export class RecipeListComponent implements OnInit{
     // add dummy data
     new Recipe('Test recipe','This is simply a test', 'https://tinyurl.com/3j3ftwhk'),
     new Recipe('Newly added recipe','New recipe', 'https://tinyurl.com/42zzmskp')
-    
   ];
+
+  constructor() { }
 
   ngOnInit() {
       
